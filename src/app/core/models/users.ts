@@ -3,7 +3,8 @@ export interface commonUser {
     name: string,
     surname: string,
     username: string,
-    email: string
+    email: string,
+    department: string
 }
 
 
@@ -13,6 +14,7 @@ export interface loggedUser {
     surname: string,
     username: string,
     email: string,
+    department: string,
     password: string,
     createdAt: Date,
     updatedAt: Date

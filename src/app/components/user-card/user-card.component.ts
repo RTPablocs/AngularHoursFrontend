@@ -14,7 +14,8 @@ export class UserCardComponent implements OnInit {
             name: '',
             surname: '',
             username: '',
-            email: ''
+            email: '',
+            department: ''
         }
     }
 
