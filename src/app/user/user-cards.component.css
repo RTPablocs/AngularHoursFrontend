@@ -1,0 +1,25 @@
+.main-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #f26849;
+    padding: 2vh;
+    width: available;
+    color: #ffffff;
+    border-radius: 1vh;
+    justify-content: space-between;
+}
+
+.icon-tray {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+input {
+    border-radius: .5vh;
+    border: none;
+    margin-top: .62vh;
+    min-width: 75%;
+    padding-left: 6px;
+}
+
