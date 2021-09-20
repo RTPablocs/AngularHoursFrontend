@@ -1,35 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LucideAngularModule } from 'lucide-angular';
 import {
     Clock,
     BarChart2,
-    ArrowLeft,
-    Award,
-    Printer,
-    Send,
     User,
-    Plus,
     Calendar,
-    Edit,
-    X,
     Settings
 } from 'lucide-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { UserCardComponent } from './components/user-card/user-card.component';
-import { UserComponent } from './pages/user/user.component';
-import { UserFormComponent } from './components/user-form/user-form.component'
+import { UserModule } from './user/user.module';
+
 @NgModule({
     declarations: [
         AppComponent,
-        SidebarComponent,
-        UserCardComponent,
-        UserComponent,
-        UserFormComponent
+        SidebarComponent
     ],
     imports: [
         BrowserModule,
@@ -38,17 +28,13 @@ import { UserFormComponent } from './components/user-form/user-form.component'
         LucideAngularModule.pick({
             Clock,
             BarChart2,
-            ArrowLeft,
-            Award,
-            Printer,
-            Send,
             User,
-            Plus,
             Calendar,
-            Edit,
-            X,
             Settings
-        })
+        }),
+        FormsModule,
+        ReactiveFormsModule,
+        UserModule
     ],
     providers: [],
     bootstrap: [AppComponent]
