@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { commonUser } from '../core/models/users';
-import { UsersService } from '../core/services/http/users.service';
+import { commonUser } from '../../core/models/users';
+import { UsersService } from '../../core/services/http/users.service';
 
 @Component({
     selector: 'app-user-cards',
