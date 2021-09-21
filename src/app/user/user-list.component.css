@@ -1,6 +1,6 @@
 .grid {
     display: inline-grid;
     grid-template-columns: repeat(5, 15vw);
-    grid-column-gap: 5vh;
+    grid-column-gap: 1vh;
     grid-row-gap: 1vh;
 }

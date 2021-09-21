@@ -13,5 +13,7 @@ export class UsersService {
     getAllUsers(): Observable<userList>{
         return this.http.get<userList>('http://localhost:3000/users')
     }
-
+    deleteOneUser(id:string): void{
+        this.http.delete(`http://localhost:3000/users/${id}`)
+    }
 }

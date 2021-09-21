@@ -3,7 +3,7 @@ export interface commonUser {
     name: string,
     surname: string,
     username: string,
-    email: string,
+    mail: string,
     department: string
 }
 
@@ -13,7 +13,7 @@ export interface loggedUser {
     name: string,
     surname: string,
     username: string,
-    email: string,
+    mail: string,
     department: string,
     password: string,
     createdAt: Date,
@@ -22,5 +22,5 @@ export interface loggedUser {
 
 export interface userList {
     total: number,
-    users: Array<commonUser>
+    users: commonUser[]
 }
