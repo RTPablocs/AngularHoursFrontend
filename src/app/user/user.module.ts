@@ -9,7 +9,8 @@ import { LucideAngularModule } from 'lucide-angular';
 import {
     Edit,
     X,
-    Check
+    Check,
+    Trash2
 } from 'lucide-angular';
 
 @NgModule({
@@ -24,7 +25,8 @@ import {
     LucideAngularModule.pick({
         Edit,
         Check,
-        X
+        X,
+        Trash2
     })
   ]
 })

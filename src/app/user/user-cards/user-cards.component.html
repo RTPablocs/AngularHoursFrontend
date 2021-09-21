@@ -1,9 +1,19 @@
-<div class="main-card">
+<div class="main-card" *ngIf="!this.editing">
     <h3 class="primary-font">{{user.surname}}, {{user.name}}</h3>
     <p class="sec-font">@{{user.username}}</p>
     <p class="sec-font"> Department: {{user.department}}</p>
     <div class="icon-tray">
-        <lucide-icon name="edit" class="icon-alt"></lucide-icon>
+        <lucide-icon name="edit" class="icon-alt" (click)="this.switchEditMode()"></lucide-icon>
         <lucide-icon name="x" class="icon-alt"></lucide-icon>
+    </div>
+</div>
+
+<div class="main-card" *ngIf="this.editing">
+    <input class="primary-font" placeholder="{{user.surname}}, {{user.name}}">
+    <input class="sec-font" placeholder="{{user.username}}">
+    <input class="sec-font" placeholder="{{user.department}}">
+    <div class="icon-tray">
+        <lucide-icon name="check" class="icon-alt"></lucide-icon>
+        <lucide-icon name="x" class="icon-alt" (click)="this.switchEditMode()"></lucide-icon>
     </div>
 </div>

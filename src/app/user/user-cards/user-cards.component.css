@@ -7,6 +7,7 @@
     color: #ffffff;
     border-radius: 1vh;
     justify-content: space-between;
+    height: 74%;
 }
 
 .icon-tray {
@@ -18,8 +19,8 @@
 input {
     border-radius: .5vh;
     border: none;
-    margin-top: .62vh;
     min-width: 75%;
     padding-left: 6px;
+    margin-bottom: 0.62vh;
 }
 
