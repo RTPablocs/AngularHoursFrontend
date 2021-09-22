@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
-import { UserCardsComponent } from './user-cards/user-cards.component';
+import { UserCardsComponent } from '../shared/user-cards/user-cards.component';
 import { FormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
 import {
