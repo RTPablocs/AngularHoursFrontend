@@ -7,11 +7,12 @@
     color: #ffffff;
     border-radius: 1vh;
     justify-content: space-between;
-    height: 74%;
+    height: 78%;
 }
 
 .icon-tray {
     display: flex;
+    margin-top: 2px;
     justify-content: flex-end;
 }
 
