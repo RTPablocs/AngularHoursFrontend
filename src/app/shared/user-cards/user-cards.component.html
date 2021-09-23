@@ -2,6 +2,7 @@
     <h3 class="primary-font">{{user.surname}}, {{user.name}}</h3>
     <p class="sec-font">@{{user.username}}</p>
     <p class="sec-font"> Department: {{user.department}}</p>
+    <p class="sec-font"> Mail: {{user.mail}}</p>
     <div class="icon-tray">
         <lucide-icon name="edit" class="icon-alt" (click)="this.switchEditMode()"></lucide-icon>
         <lucide-icon name="x" class="icon-alt"></lucide-icon>
@@ -12,6 +13,7 @@
     <input class="primary-font" placeholder="{{user.surname}}, {{user.name}}">
     <input class="sec-font" placeholder="{{user.username}}">
     <input class="sec-font" placeholder="{{user.department}}">
+    <input class="sec-font" placeholder="{{user.mail}}">
     <div class="icon-tray">
         <lucide-icon name="check" class="icon-alt"></lucide-icon>
         <lucide-icon name="x" class="icon-alt" (click)="this.switchEditMode()"></lucide-icon>
