@@ -15,13 +15,14 @@ export class ApiService {
             .pipe(catchError(err => throwError(err.error)))
 
     }
+
     post(path: string, postBody: Object): Observable<any> {
         return this.httpClient.post(`${environment.url}${path}`, postBody)
             .pipe(catchError(err => throwError(err.error)))
     }
 
     patch(path:string, patchBody: Object): Observable<any> {
-        return this.httpClient.post(`${environment.url}${path}`, patchBody)
+        return this.httpClient.patch(`${environment.url}${path}`, patchBody)
             .pipe(catchError(err => throwError(err.error)))
     }
 
