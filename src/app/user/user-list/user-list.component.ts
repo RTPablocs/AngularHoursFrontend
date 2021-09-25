@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { userList } from '../../core/models/users';
+import { commonUser, userList } from '../../core/models/users';
 import { UsersService } from '../../core/services/http/users.service';
 
 @Component({
@@ -11,12 +11,12 @@ export class UserListComponent implements OnInit {
 
     constructor(private UserHttp: UsersService) { }
 
-    userList !: userList
+    userList !: commonUser[]
 
     ngOnInit(): void {
         this.UserHttp.getAllUsers()
             .subscribe((data) => {
-                this.userList = data
+                this.userList = data.users
                 console.log(this.userList)
             })
     }
