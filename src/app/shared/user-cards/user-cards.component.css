@@ -16,12 +16,17 @@
     justify-content: flex-end;
 }
 
-
 input {
-    border-radius: .5vh;
+    border-radius: 0.5vh;
     border: none;
-    min-width: 75%;
     padding-left: 6px;
     margin-bottom: 0.62vh;
+    width: 98%;
 }
 
+.input-tray {
+    width: 98%;
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    grid-column-gap: 1vh;
+}
