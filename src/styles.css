@@ -41,6 +41,7 @@
 .app-display {
     display: inline-flex;
     width: 95vw;
+    flex-direction: column;
     position: absolute;
     margin-top: 1vh;
     margin-left: 1vw;
