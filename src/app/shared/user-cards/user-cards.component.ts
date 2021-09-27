@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Input } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { commonUser } from '../../core/models/users';
+import { commonUser, userList } from '../../core/models/users';
 import { UsersService } from '../../core/services/http/users.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class UserCardsComponent implements OnInit {
 
     editing = false
     @Input() user!: commonUser
+    @Output() list = new EventEmitter<commonUser[]>()
 
     userForm = new FormGroup({
         name: new FormControl(null),
@@ -38,6 +39,15 @@ export class UserCardsComponent implements OnInit {
             .subscribe(data => this.user = data)
         this.userForm.reset()
         this.switchEditMode()
+    }
+
+    deleteUser(): void {
+        this.userHttp.deleteUser(this.user.id)
+            .subscribe(data =>{
+                this.list.emit(data)
+            }
+
+                )
     }
 
     sanitizeFormOutput(): void {
