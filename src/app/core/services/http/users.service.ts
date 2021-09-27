@@ -14,7 +14,7 @@ export class UsersService {
         return this.api.get('users')
     }
 
-    getOneUser(id: string):Observable<commonUser> {
+    getOneUser(id: string): Observable<commonUser> {
         return this.api.get(`users/${id}`)
     }
 
@@ -26,11 +26,11 @@ export class UsersService {
         return this.api.post('users/new', body)
     }
 
-    updateUser(id: string, body: Object): Observable<loggedUser> {
+    updateUser(id: string, body: Object): Observable<commonUser> {
         return this.api.patch(`users/update/${id}`, body)
     }
 
-    deleteUser(id: string): Observable<any>{
+    deleteUser(id: string): Observable<any> {
         return this.api.delete(`users/delete/${id}`)
     }
 }
