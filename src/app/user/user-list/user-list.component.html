@@ -1,6 +1,11 @@
 <div class="app-display">
     <div class="grid">
-        <app-user-cards *ngFor="let user of userList" [user]=user (list)="this.userList = $event"></app-user-cards>
+        <app-user-cards *ngFor="let user of userList" [user]=user (deletedUser)="deleteUser($event)"></app-user-cards>
+
     </div>
-    <app-user-filters></app-user-filters>
+    <div class="flex-container">
+        <app-user-filters></app-user-filters>
+        <app-user-creator></app-user-creator>
+    </div>
 </div>
+

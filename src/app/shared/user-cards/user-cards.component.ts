@@ -15,7 +15,7 @@ export class UserCardsComponent implements OnInit {
 
     editing = false
     @Input() user!: commonUser
-    @Output() list = new EventEmitter<commonUser[]>()
+    @Output() deletedUser = new EventEmitter<string>()
 
     userForm = new FormGroup({
         name: new FormControl(null),
@@ -42,12 +42,7 @@ export class UserCardsComponent implements OnInit {
     }
 
     deleteUser(): void {
-        this.userHttp.deleteUser(this.user.id)
-            .subscribe(data =>{
-                this.list.emit(data)
-            }
-
-                )
+        this.deletedUser.emit(this.user.id)
     }
 
     sanitizeFormOutput(): void {
