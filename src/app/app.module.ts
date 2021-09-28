@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +17,8 @@ import {
 } from 'lucide-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
     declarations: [
@@ -25,6 +29,7 @@ import { UserModule } from './user/user.module';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        BrowserAnimationsModule,
         LucideAngularModule.pick({
             Clock,
             BarChart2,
@@ -34,7 +39,9 @@ import { UserModule } from './user/user.module';
         }),
         FormsModule,
         ReactiveFormsModule,
-        UserModule
+        UserModule,
+        SharedModule,
+        CoreModule
     ],
     providers: [],
     bootstrap: [AppComponent]
