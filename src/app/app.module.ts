@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
 import { LucideAngularModule } from 'lucide-angular';
 import {
     Clock,
