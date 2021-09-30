@@ -1,0 +1,5 @@
+<div class="icon-tray">
+    <lucide-icon name="check" *ngIf="this.isEditing" (click)="this.notifyUpdateChanges()"></lucide-icon>
+    <lucide-icon name="edit" *ngIf="!this.isEditing" (click)="this.toggleEditMode()"></lucide-icon>
+    <lucide-icon name="x" (click)="this.setDeleteMode()"></lucide-icon>
+</div>
