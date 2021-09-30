@@ -33,7 +33,9 @@ export class UserCreatorComponent implements OnInit {
     constructor() { }
 
     @Output('userCreated') user = new EventEmitter<loggedUser>()
+
     isOpen = false
+    readyToSend = false
 
     userData = new FormGroup({
         name: new FormControl(null),
@@ -45,14 +47,23 @@ export class UserCreatorComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    triggerUserCreateEvent(){
-
-        this.user.emit()
-        this.toggle()
-        this.userData.reset()
-    }
 
     toggle(){
         this.isOpen = !this.isOpen
+    }
+
+    closeCreator(state: any): void {
+        this.isOpen = !state
+
+    }
+
+    triggerCreateUser(state: any): void {
+        this.isOpen = !state
+        this.readyToSend = state
+    }
+
+    log(args: any): void {
+        console.log(args);
+
     }
 }
