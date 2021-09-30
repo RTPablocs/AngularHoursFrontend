@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { commonUser, userList } from '../../core/models/users';
 import { UsersService } from '../../core/services/http/users.service';
 
@@ -7,7 +7,7 @@ import { UsersService } from '../../core/services/http/users.service';
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, OnDestroy {
 
     constructor(private UserHttp: UsersService) { }
 
@@ -17,8 +17,14 @@ export class UserListComponent implements OnInit {
         this.UserHttp.getAllUsers()
             .subscribe((data) => {
                 this.userList = data.users
-                console.log(this.userList)
             })
     }
 
+    ngOnDestroy() {
+    }
+
+    deleteUser(id: string) {
+        this.UserHttp.deleteUser(id)
+            .subscribe(data => this.userList = data)
+    }
 }
