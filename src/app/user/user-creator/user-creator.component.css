@@ -1,0 +1,17 @@
+.card-main {
+    width: 18vw;
+    background-color: #d2d2d2;
+    display: flex;
+    flex-direction: column;
+
+    padding: 2vh;
+    width: available;
+    border-radius: 1vh;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+}
+
