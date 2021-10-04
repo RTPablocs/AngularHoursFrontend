@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { commonUser, userList } from '../../core/models/users';
+import { loggedUser } from '../../core/models/users';
 import { UsersService } from '../../core/services/http/users.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class UserCardsComponent implements OnInit {
     constructor(private userHttp: UsersService) { }
 
     editing = false
-    @Input() user!: commonUser
+    @Input() user!: loggedUser
     @Output() deletedUser = new EventEmitter<string>()
 
     userForm = new FormGroup({
@@ -49,5 +49,8 @@ export class UserCardsComponent implements OnInit {
         Object.keys(this.userForm.value).forEach((key) => {
             this.userForm.value[key] == null && delete this.userForm.value[key]
         })
+    }
+    log(arg: any): void {
+        console.log(arg);
     }
 }

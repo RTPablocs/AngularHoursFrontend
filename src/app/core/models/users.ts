@@ -22,5 +22,5 @@ export interface loggedUser {
 
 export interface userList {
     total: number,
-    users: commonUser[]
+    users: loggedUser[]
 }
