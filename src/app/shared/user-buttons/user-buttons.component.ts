@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-user-buttons',
@@ -27,8 +27,6 @@ export class UserButtonsComponent implements OnInit {
     emitDataToParent(outputPlace: EventEmitter<boolean>, value: boolean): void {
         outputPlace.emit(value)
 
-    }
-    resetEverything(): void {
     }
 
 }
