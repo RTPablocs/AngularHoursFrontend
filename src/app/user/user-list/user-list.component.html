@@ -5,7 +5,7 @@
     </div>
     <div class="flex-container">
         <app-user-filters></app-user-filters>
-        <app-user-creator></app-user-creator>
+        <app-user-creator (userCreated)="this.createUser($event)"></app-user-creator>
     </div>
 </div>
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { loggedUser, commonUser, userList } from '../../models/users';
+import { responseUser } from '../../models/response';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
@@ -22,11 +23,11 @@ export class UsersService {
         return this.api.get(`users/mydata/${id}`)
     }
 
-    createUser(body: Object): Observable<loggedUser> {
+    createUser(body: Object): Observable<responseUser> {
         return this.api.post('users/new', body)
     }
 
-    updateUser(id: string, body: Object): Observable<commonUser> {
+    updateUser(id: string, body: Object): Observable<loggedUser> {
         return this.api.patch(`users/update/${id}`, body)
     }
 

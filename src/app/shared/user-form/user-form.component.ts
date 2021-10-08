@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { commonUser, loggedUser } from 'src/app/core/models/users';
-;
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {formDataEmitter} from 'src/app/core/models/form';
 
 
 @Component({
@@ -10,10 +8,16 @@ import { commonUser, loggedUser } from 'src/app/core/models/users';
     templateUrl: './user-form.component.html',
     styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit{
+export class UserFormComponent implements OnInit {
 
-    constructor() { }
-    @Output() userToSubmit = new EventEmitter<loggedUser>()
+    constructor() {
+    }
+
+    @Output() dataToSubmit = new EventEmitter<formDataEmitter>()
+
+    dataSubmitScheme: formDataEmitter = {
+        isOpen: false
+    }
 
     userData = new FormGroup({
         name: new FormControl(null),
@@ -21,19 +25,29 @@ export class UserFormComponent implements OnInit{
         username: new FormControl(null),
         department: new FormControl(null),
         mail: new FormControl(null),
-        password: new FormControl(null)
+        password: new FormControl(this.generateBasicPassword())
     })
 
     ngOnInit(): void {
+
     }
 
     eventSubmitData() {
-        this.userToSubmit.emit(this.userData.value)
+        this.dataSubmitScheme.userData = this.userData.value
+        this.dataToSubmit.emit(this.dataSubmitScheme)
+        this.resetEverything()
     }
 
-    generatePassword(): void {
-
+    emitCloseBox(): void {
+        this.dataSubmitScheme.isOpen = false
+        delete this.dataSubmitScheme.userData
+        this.dataToSubmit.emit(this.dataSubmitScheme)
     }
+
+    generateBasicPassword(): string {
+        return Math.random().toString(36).slice(-8)
+    }
+
 
     resetEverything(): void {
         this.userData.reset()

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-user-buttons',
@@ -8,44 +8,25 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class UserButtonsComponent implements OnInit {
 
     constructor() { }
-    @Input() disablEditMode !: boolean
     @Output() hasUpdatedAnything = new EventEmitter<any>()
-    @Output() hasFinishedEditing = new EventEmitter<any>()
     @Output() isGoingToDelete = new EventEmitter<any>()
 
-    isEditing = false
-    isDeleting = false
-    isSubmiting = false
 
     ngOnInit(): void {
-        if (this.disablEditMode) {
-            this.isEditing = true
-        }
     }
 
     notifyUpdateChanges(): void {
-        if (!this.disablEditMode) { this.isEditing = !this.isEditing }
-        this.isSubmiting = true
-        this.emitDataToParent(this.hasUpdatedAnything, this.isSubmiting)
-        this.isSubmiting = false
-        console.log('A');
-
-
-    }
-
-    toggleEditMode(): void {
-        this.isEditing = !this.isEditing
-        this.emitDataToParent(this.hasFinishedEditing, this.isEditing)
+        this.emitDataToParent(this.hasUpdatedAnything, true)
 
     }
 
     setDeleteMode(): void {
-        this.isDeleting = !this.isDeleting
-        this.emitDataToParent(this.isGoingToDelete, this.isDeleting)
+        this.emitDataToParent(this.isGoingToDelete, true)
     }
 
     emitDataToParent(outputPlace: EventEmitter<boolean>, value: boolean): void {
         outputPlace.emit(value)
+
     }
 
 }
