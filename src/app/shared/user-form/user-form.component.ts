@@ -1,9 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { formDataEmitter } from 'src/app/core/models/form';
-import { commonUser, loggedUser } from 'src/app/core/models/users';
-;
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {formDataEmitter} from 'src/app/core/models/form';
 
 
 @Component({
@@ -13,7 +10,9 @@ import { commonUser, loggedUser } from 'src/app/core/models/users';
 })
 export class UserFormComponent implements OnInit {
 
-    constructor() { }
+    constructor() {
+    }
+
     @Output() dataToSubmit = new EventEmitter<formDataEmitter>()
 
     dataSubmitScheme: formDataEmitter = {
@@ -34,9 +33,8 @@ export class UserFormComponent implements OnInit {
     }
 
     eventSubmitData() {
-        console.log(this.userData.value);
-
-        this.dataToSubmit.emit(this.userData.value)
+        this.dataSubmitScheme.userData = this.userData.value
+        this.dataToSubmit.emit(this.dataSubmitScheme)
         this.resetEverything()
     }
 

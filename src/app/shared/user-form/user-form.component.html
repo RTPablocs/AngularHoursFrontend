@@ -7,3 +7,4 @@
     <input class="sec-font" placeholder="department" formControlName="department">
     <input class="sec-font" placeholder="email" formControlName="mail">
 </form>
+<app-user-buttons (hasUpdatedAnything)="this.eventSubmitData()" (isGoingToDelete)="this.emitCloseBox()"></app-user-buttons>
