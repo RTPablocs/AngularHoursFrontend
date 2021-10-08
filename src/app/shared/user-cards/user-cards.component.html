@@ -1,26 +1,10 @@
-<div class="main-card" *ngIf="!this.editing">
-    <h3 class="primary-font">{{user.surname}}, {{user.name}}</h3>
-    <p class="sec-font">@{{user.username}}</p>
-    <p class="sec-font"> Department: {{user.department}}</p>
-    <p class="sec-font"> Mail: {{user.mail}}</p>
-    <div class="icon-tray">
-        <lucide-icon name="edit" class="icon-alt" (click)="this.switchEditMode()"></lucide-icon>
-        <lucide-icon name="x" class="icon-alt" (click)="this.deleteUser()"></lucide-icon>
+<div class="main-card">
+    <div *ngIf="!this.editing">
+        <h3 class="primary-font">{{user.surname}}, {{user.name}}</h3>
+        <p class="sec-font">@{{user.username}}</p>
+        <p class="sec-font"> Department: {{user.department}}</p>
+        <p class="sec-font"> Mail: {{user.mail}}</p>
+        <app-password-container [password]="user.password"></app-password-container>
     </div>
-</div>
-
-<div class="main-card" *ngIf="this.editing">
-    <form [formGroup]="userForm">
-        <div class="input-tray">
-            <input class="primary-font" placeholder="{{user.surname}}" formControlName="surname">
-            <input class="primary-font" placeholder="{{user.name}}" formControlName="name">
-        </div>
-        <input class="sec-font" placeholder="{{user.username}}" formControlName="username">
-        <input class="sec-font" placeholder="{{user.department}}" formControlName="department">
-        <input class="sec-font" placeholder="{{user.mail}}" formControlName="mail">
-    </form>
-    <div class="icon-tray">
-        <lucide-icon name="check" class="icon-alt" (click)="this.submitFormData()"></lucide-icon>
-        <lucide-icon name="x" class="icon-alt" (click)="this.switchEditMode()"></lucide-icon>
-    </div>
+    <app-user-form *ngIf="this.editing"></app-user-form>
 </div>
