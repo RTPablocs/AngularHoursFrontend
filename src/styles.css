@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@500&family=Hind&family=Kanit:ital,wght@1,300&display=swap");
 
+@font-face {
+    font-family: "Time";
+    src: url("assets/Time-is-short.ttf") format("truetype");
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -47,4 +53,8 @@
     margin-left: 1vw;
     max-height: 95vw;
 
+}
+
+.time-font {
+    font-family: "Time", sans-serif;
 }
