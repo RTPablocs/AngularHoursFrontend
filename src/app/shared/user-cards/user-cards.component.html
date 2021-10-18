@@ -6,5 +6,10 @@
         <p class="sec-font"> Mail: {{user.mail}}</p>
         <app-password-container [password]="user.password"></app-password-container>
     </div>
-    <app-user-form *ngIf="this.editing"></app-user-form>
+
+    <app-user-form *ngIf="this.editing"  [isEditable]="true" (dataToSubmit)="this.decideNextStep($event)"></app-user-form>
+</div>
+<div class="edit-buttons" *ngIf="!this.editing">
+    <lucide-icon name="x" (click)="deleteUser()"></lucide-icon>
+    <lucide-icon name="edit" (click)="switchEditMode()"></lucide-icon>
 </div>

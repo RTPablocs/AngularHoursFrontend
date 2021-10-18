@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { loggedUser} from '../../core/models/users';
-import { UsersService } from '../../core/services/http/users.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {loggedUser} from '../../core/models/users';
+import {UsersService} from '../../core/services/http/users.service';
 
 @Component({
     selector: 'app-user-list',
@@ -9,7 +9,8 @@ import { UsersService } from '../../core/services/http/users.service';
 })
 export class UserListComponent implements OnInit, OnDestroy {
 
-    constructor(private UserHttp: UsersService) { }
+    constructor(private UserHttp: UsersService) {
+    }
 
     userList !: loggedUser[]
 
@@ -27,8 +28,19 @@ export class UserListComponent implements OnInit, OnDestroy {
         this.UserHttp.deleteUser(id)
             .subscribe(data => this.userList = data)
     }
+
     createUser(user: loggedUser) {
         this.UserHttp.createUser(user)
-            .subscribe(data => { this.userList = data.resultAfterOperation })
+            .subscribe(data => {
+                this.userList = data.resultAfterOperation
+            })
+    }
+
+    updateUser(id: string, updateFields: object) {
+        console.log(updateFields)
+        this.UserHttp.updateUser(id, updateFields).subscribe((data) => {
+                this.userList = data.resultAfterOperation
+            }
+        )
     }
 }

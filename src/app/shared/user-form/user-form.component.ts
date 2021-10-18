@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {formDataEmitter} from 'src/app/core/models/form';
 
@@ -14,6 +14,7 @@ export class UserFormComponent implements OnInit {
     }
 
     @Output() dataToSubmit = new EventEmitter<formDataEmitter>()
+    @Input('isEditable') isEditable !: boolean
 
     dataSubmitScheme: formDataEmitter = {
         isOpen: false
@@ -33,9 +34,18 @@ export class UserFormComponent implements OnInit {
     }
 
     eventSubmitData() {
-        this.dataSubmitScheme.userData = this.userData.value
-        this.dataToSubmit.emit(this.dataSubmitScheme)
-        this.resetEverything()
+        if (this.isEditable) {
+            this.editModeRequired()
+            this.dataSubmitScheme.userData = this.userData.value
+            this.dataToSubmit.emit(this.dataSubmitScheme)
+            this.resetEverything()
+        } else {
+            this.dataSubmitScheme.userData = this.userData.value
+            this.dataToSubmit.emit(this.dataSubmitScheme)
+            this.resetEverything()
+        }
+
+
     }
 
     emitCloseBox(): void {
@@ -48,8 +58,19 @@ export class UserFormComponent implements OnInit {
         return Math.random().toString(36).slice(-8)
     }
 
+    editModeRequired(): void {
+        this.userData.value.password = null
+        this.clearNullValues()
+    }
+
+    clearNullValues(): void {
+        Object.keys(this.userData.value).forEach((key) => {
+            if (this.userData.value[key] == null) delete this.userData.value[key]
+        })
+    }
 
     resetEverything(): void {
+        this.dataSubmitScheme.isOpen = false
         this.userData.reset()
     }
 

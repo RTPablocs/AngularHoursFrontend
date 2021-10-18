@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 
 @Component({
     selector: 'app-user-buttons',
@@ -7,9 +7,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class UserButtonsComponent implements OnInit {
 
-    constructor() { }
+    constructor() {
+    }
+
+    @Input() needsEditMode !: boolean
     @Output() hasUpdatedAnything = new EventEmitter<any>()
     @Output() isGoingToDelete = new EventEmitter<any>()
+    @Output() isGoingToEdit = new EventEmitter<any>()
 
 
     ngOnInit(): void {
@@ -18,6 +22,10 @@ export class UserButtonsComponent implements OnInit {
     notifyUpdateChanges(): void {
         this.emitDataToParent(this.hasUpdatedAnything, true)
 
+    }
+
+    setEditMode(): void {
+        this.emitDataToParent(this.isGoingToEdit, true)
     }
 
     setDeleteMode(): void {

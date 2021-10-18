@@ -1,6 +1,6 @@
 <div class="app-display">
     <div class="grid">
-        <app-user-cards *ngFor="let user of userList" [user]=user (deletedUser)="deleteUser($event)"></app-user-cards>
+        <app-user-cards *ngFor="let user of userList" [user]=user (deletedUser)="deleteUser($event)" (updatedUser)="updateUser(user.id, $event)"></app-user-cards>
 
     </div>
     <div class="flex-container">
