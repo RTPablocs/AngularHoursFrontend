@@ -27,7 +27,7 @@ export class UsersService {
         return this.api.post('users/new', body)
     }
 
-    updateUser(id: string, body: Object): Observable<loggedUser> {
+    updateUser(id: string, body: Object): Observable<responseUser> {
         return this.api.patch(`users/update/${id}`, body)
     }
 
