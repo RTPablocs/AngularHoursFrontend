@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { commonUser, userList } from '../../core/models/users';
-import { UsersService } from '../../core/services/http/users.service';
+import {Component, OnInit} from '@angular/core';
+import {Input, Output, EventEmitter} from '@angular/core';
+import {loggedUser} from '../../core/models/users';
 
 @Component({
     selector: 'app-user-cards',
@@ -11,43 +9,41 @@ import { UsersService } from '../../core/services/http/users.service';
 })
 export class UserCardsComponent implements OnInit {
 
-    constructor(private userHttp: UsersService) { }
+    constructor() {
+    }
 
     editing = false
-    @Input() user!: commonUser
+    @Input() user!: loggedUser
     @Output() deletedUser = new EventEmitter<string>()
-
-    userForm = new FormGroup({
-        name: new FormControl(null),
-        surname: new FormControl(null),
-        username: new FormControl(null),
-        mail: new FormControl(null),
-        department: new FormControl(null)
-    })
+    @Output() updatedUser = new EventEmitter<loggedUser>()
 
 
     ngOnInit(): void {
     }
 
     switchEditMode(): void {
+        console.log('D')
         this.editing = !this.editing
     }
 
-    submitFormData(): void {
-        this.sanitizeFormOutput()
-        this.userHttp.updateUser(this.user.id, this.userForm.value)
-            .subscribe(data => this.user = data)
-        this.userForm.reset()
-        this.switchEditMode()
-    }
 
     deleteUser(): void {
         this.deletedUser.emit(this.user.id)
+
     }
 
-    sanitizeFormOutput(): void {
-        Object.keys(this.userForm.value).forEach((key) => {
-            this.userForm.value[key] == null && delete this.userForm.value[key]
-        })
+    decideNextStep(arg: any): void {
+        arg.hasOwnProperty('userData')? this.submitChanges(arg.userData): this.switchEditMode()
+    }
+
+    submitChanges(data: loggedUser): void {
+        console.log('S')
+        this.updatedUser.emit(data)
+        this.switchEditMode()
+    }
+
+
+    log(arg: any): void {
+        console.log(arg);
     }
 }

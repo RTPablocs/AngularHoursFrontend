@@ -11,15 +11,20 @@ import {
     X,
     Check,
     Trash2,
-    Star
+    Star,
+    Plus
 } from 'lucide-angular';
 import { UserFiltersComponent } from './user-filters/user-filters.component';
+import { UserCreatorComponent } from './user-creator/user-creator.component';
+import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
     UserListComponent,
     UserCardsComponent,
-    UserFiltersComponent
+    UserFiltersComponent,
+    UserCreatorComponent,
   ],
   imports: [
     CommonModule,
@@ -30,9 +35,12 @@ import { UserFiltersComponent } from './user-filters/user-filters.component';
         Check,
         X,
         Trash2,
-        Star
+        Star,
+        Plus
     }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    CoreModule
   ]
 })
 export class UserModule { }
