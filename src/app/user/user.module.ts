@@ -20,27 +20,30 @@ import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 
 @NgModule({
-  declarations: [
-    UserListComponent,
-    UserCardsComponent,
-    UserFiltersComponent,
-    UserCreatorComponent,
-  ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    FormsModule,
-    LucideAngularModule.pick({
-        Edit,
-        Check,
-        X,
-        Trash2,
-        Star,
-        Plus
-    }),
-    ReactiveFormsModule,
-    SharedModule,
-    CoreModule
-  ]
+    declarations: [
+        UserListComponent,
+        UserCardsComponent,
+        UserFiltersComponent,
+        UserCreatorComponent,
+    ],
+    exports: [
+        UserCardsComponent
+    ],
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        FormsModule,
+        LucideAngularModule.pick({
+            Edit,
+            Check,
+            X,
+            Trash2,
+            Star,
+            Plus
+        }),
+        ReactiveFormsModule,
+        SharedModule,
+        CoreModule
+    ]
 })
 export class UserModule { }
