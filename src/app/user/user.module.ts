@@ -11,28 +11,39 @@ import {
     X,
     Check,
     Trash2,
-    Star
+    Star,
+    Plus
 } from 'lucide-angular';
 import { UserFiltersComponent } from './user-filters/user-filters.component';
+import { UserCreatorComponent } from './user-creator/user-creator.component';
+import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
-  declarations: [
-    UserListComponent,
-    UserCardsComponent,
-    UserFiltersComponent
-  ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    FormsModule,
-    LucideAngularModule.pick({
-        Edit,
-        Check,
-        X,
-        Trash2,
-        Star
-    }),
-    ReactiveFormsModule
-  ]
+    declarations: [
+        UserListComponent,
+        UserCardsComponent,
+        UserFiltersComponent,
+        UserCreatorComponent,
+    ],
+    exports: [
+        UserCardsComponent
+    ],
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        FormsModule,
+        LucideAngularModule.pick({
+            Edit,
+            Check,
+            X,
+            Trash2,
+            Star,
+            Plus
+        }),
+        ReactiveFormsModule,
+        SharedModule,
+        CoreModule
+    ]
 })
 export class UserModule { }
