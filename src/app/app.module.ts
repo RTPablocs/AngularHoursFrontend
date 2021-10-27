@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import {CalendarModule} from "./calendar/calendar.module";
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { CoreModule } from './core/core.module';
         ReactiveFormsModule,
         UserModule,
         SharedModule,
-        CoreModule
+        CoreModule,
+        CalendarModule
     ],
     providers: [],
     bootstrap: [AppComponent]
