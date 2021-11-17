@@ -14,6 +14,7 @@ export class UserCardsComponent implements OnInit {
 
     editing = false
     @Input() user!: loggedUser
+    @Input() forEditingPurposes = true
     @Output() deletedUser = new EventEmitter<string>()
     @Output() updatedUser = new EventEmitter<loggedUser>()
 
@@ -22,7 +23,6 @@ export class UserCardsComponent implements OnInit {
     }
 
     switchEditMode(): void {
-        console.log('D')
         this.editing = !this.editing
     }
 
@@ -33,11 +33,10 @@ export class UserCardsComponent implements OnInit {
     }
 
     decideNextStep(arg: any): void {
-        arg.hasOwnProperty('userData')? this.submitChanges(arg.userData): this.switchEditMode()
+        arg.hasOwnProperty('userData') ? this.submitChanges(arg.userData) : this.switchEditMode()
     }
 
     submitChanges(data: loggedUser): void {
-        console.log('S')
         this.updatedUser.emit(data)
         this.switchEditMode()
     }
